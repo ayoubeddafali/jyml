@@ -32,8 +32,7 @@ To create a jenkins job from a .yml file :
 The Jenkins credentials is a file containing the url, username, password of your jenkins server :
 
 
-![DEMO](https://github.com/ayoubensalem/jyml/blob/master/images/jenkins_creds.png)
-
+..  image:: images/jenkins_creds.png
 
 
 Running Tests
