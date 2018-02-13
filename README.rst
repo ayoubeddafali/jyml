@@ -1,1 +1,76 @@
-IT S YOUR REPOSITORIES :)
+JYML Tool
+========
+
+CLI for generating and building jenkins jobs to and from yaml files.
+
+
+Preparing for Development
+--------------------------
+
+1. Ensure ``pip``, and ``pipenv`` are installed.
+2. Clone the repo: ``https://github.com/ayoubensalem/jyml``
+3. Fetch development dependencies : ``make install``
+
+
+Usage
+------
+
+
+To generate a .yml file :
+
+::
+
+    $ jyml --generate-yaml job/config.xml job_name
+
+To create a jenkins job from a .yml file :
+
+::
+
+    $ jyml --create-job jenkins_credentials.ini update job.yml
+
+
+The Jenkins credentials is a file containing the url, username, password of your jenkins server :
+
+
+![](jenkins_creds.png)
+
+
+
+Running Tests
+-------------
+
+Run tests locally using ``make`` if virtualenv is active:
+
+::
+
+    $ make
+
+If virtualenv isn't active then use:
+
+::
+
+    $ pipenv run make
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
