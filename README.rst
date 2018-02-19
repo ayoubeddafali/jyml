@@ -2,7 +2,7 @@ JYML Tool
 ========
 
 CLI for generating and building jenkins jobs to and from yaml files.
-
+**Right now, it works just with python 2.**
 
 Preparing for Development
 --------------------------
