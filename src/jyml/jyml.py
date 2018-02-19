@@ -4,7 +4,7 @@ import cli
 
 def generate(config_file, job_name):
     try:
-        return subprocess.Popen(['jjwrecker', '-f', config_file, '-n', job_name], stdout=subprocess.PIPE)
+        return subprocess.Popen(['jjwrecker', '-v' , '-f', config_file, '-n', job_name, '-o', '/tmp/output'], stdout=subprocess.PIPE)
     except OSError as err:
         print("Error: jjwrecker command  not found.")
         sys.exit(2)
