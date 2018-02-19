@@ -1,11 +1,11 @@
 import argparse
-import re
+import sys 
 
 class DriverAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        xml_pattern = re.compile(r'[a-zA-Z]{1,}.xml$')
+        # xml_pattern = re.compile(r'*.xml$')
         config_file, job_name = values
-        if not xml_pattern.match(config_file):
+        if not config_file.endswith(".xml"):
             parser.error("File must end with .xml extension.")
         namespace.config_file = config_file.lower()
         namespace.job_name = job_name
@@ -14,9 +14,10 @@ class CreateAction(argparse.Action):
     known_actions=["get-plugins-info","delete-all","test","update","delete"]
     def __call__(self, parser, namespace, values, option_string=None):
         jenkins_credentials, action, yml_file = values
-        yaml_pattern = re.compile(r'[a-zA-Z]{1,}.yml$')
-        if not yaml_pattern.match(yml_file):
-            parser.error("File must end with .yml extension.")
+        # pattern = "*.yml$"
+        # yaml_pattern = re.compile(r'*.yml$')
+        if not yml_file.endswith(".yml"):
+             parser.error("File must end with .yml extension.")
         namespace.jenkins_credentials = jenkins_credentials
         namespace.action = action.lower()
         namespace.yml_file = yml_file
@@ -27,12 +28,12 @@ def create_parser():
                 Generate or Build Jenkins Jobs to/from YAML files.
                 """
             )
-    parser.add_argument('--generate-yaml', help='Job Config xml file & Job name',
+    parser.add_argument('-g', '--generate', dest="ayoub", help='Job Config xml file & Job name',
             nargs=2,
             metavar=("CONFIG_FILE", "JOB_NAME"),
             action=DriverAction,
             required=False)
-    parser.add_argument('--create-job', help="Jenkins credentials, action & yaml file.",
+    parser.add_argument('-c', '--create', help="Jenkins credentials, action & yaml file.",
             nargs=3,
             metavar=("JENKINS_CREDENTIALS", "ACTION", "YML_FILE"),
             action=CreateAction,
@@ -41,17 +42,26 @@ def create_parser():
 
 
 if __name__== "__main__":
+    import jyml
     parser = create_parser()
-    parser.parse_args()
-
-
-def main():
-    from jyml import jyml
-    args = create_parser().parse_args()
-    if args.generate_yaml:
+    args = parser.parse_args()
+    # print(sys.argv)
+    if sys.argv[1] in ("--generate", "-g"):
         jyml.generate(args.config_file, args.job_name)
-    elif args.create_job:
+    elif sys.argv[1] in ("--create", "-c"):
         jyml.create(args.jenkins_credentials, args.action, args.yml_file)
     else:
         print("Argument not found")
 
+
+def main():
+    import jyml
+    parser = create_parser()
+    args = parser.parse_args()
+    # print(sys.argv)
+    if sys.argv[1] in ("--generate", "-g"):
+        jyml.generate(args.config_file, args.job_name)
+    elif sys.argv[1] in ("--create", "-c"):
+        jyml.create(args.jenkins_credentials, args.action, args.yml_file)
+    else:
+        print("Argument not found")
