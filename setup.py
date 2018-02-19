@@ -13,6 +13,7 @@ setup(
     author_email='ayoubensalem@gmail.com',
     packages=find_packages('src'),
     package_dir={'':'src'},
+    setup_requires=["jenkins-job-builder", "jenkins-job-wrecker"],
     install_requires=[],
     entry_points={
             'console_scripts': [
