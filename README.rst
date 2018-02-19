@@ -53,6 +53,14 @@ If virtualenv isn't active then use:
 
 
 
+Build
+-------------
+
+Build a wheel
+
+::
+
+    $ python setup.py bdist_wheel
 
 
 
