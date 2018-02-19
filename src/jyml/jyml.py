@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import cli 
 
 def generate(config_file, job_name):
     try:
@@ -13,3 +14,15 @@ def create(ini_file, action, yml_file):
     except OSError as err:
         print("Error: jenkins-jobs commnad not found.")
         sys.exit(2)
+
+
+if __name__ == "__main__": 
+    parser = cli.create_parser()
+    args = parser.parse_args()
+    print(sys.argv)
+    if sys.argv[1] in ("--generate", "-g"):
+        generate(args.config_file, args.job_name)
+    elif sys.argv[1] in ("--create", "-c"):
+        create(args.jenkins_credentials, args.action, args.yml_file)
+    else:
+        print("Argument not found")
