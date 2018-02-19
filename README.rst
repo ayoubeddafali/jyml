@@ -20,13 +20,13 @@ To generate a .yml file :
 
 ::
 
-    $ jyml --generate-yaml job/config.xml job_name
+    $ jyml --generate job/config.xml job_name
 
 To create a jenkins job from a .yml file :
 
 ::
 
-    $ jyml --create-job jenkins_credentials.ini update job.yml
+    $ jyml --create jenkins_credentials.ini update job.yml
 
 
 The Jenkins credentials is a file containing the url, username, password of your jenkins server :
