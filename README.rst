@@ -20,7 +20,7 @@ To generate a .yml file :
 
 ::
 
-    $ jyml --generate job/config.xml job_name
+    $ jyml --generate config.xml job_name
 
 To create a jenkins job from a .yml file :
 

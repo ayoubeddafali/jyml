@@ -1,6 +1,6 @@
 import subprocess
 import sys
-import cli 
+import cli
 
 def generate(config_file, job_name):
     try:
@@ -8,6 +8,7 @@ def generate(config_file, job_name):
     except OSError as err:
         print("Error: jjwrecker command  not found.")
         sys.exit(2)
+
 def create(ini_file, action, yml_file):
     try:
         return subprocess.Popen(['jenkins-jobs', '--conf', ini_file, action, yml_file ], stdout=subprocess.PIPE)
@@ -16,7 +17,7 @@ def create(ini_file, action, yml_file):
         sys.exit(2)
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     parser = cli.create_parser()
     args = parser.parse_args()
     print(sys.argv)
