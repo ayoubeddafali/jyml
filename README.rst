@@ -3,6 +3,7 @@ JYML Tool
 
 CLI for generating and building jenkins jobs to and from yaml files.
 
+**Right now, it works just with python 2.**
 
 Preparing for Development
 --------------------------
@@ -20,7 +21,7 @@ To generate a .yml file :
 
 ::
 
-    $ jyml --generate job/config.xml job_name
+    $ jyml --generate config.xml job_name
 
 A folder named `output` will be created, and there you'll find your yaml file.
 

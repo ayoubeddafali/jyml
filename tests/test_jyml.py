@@ -15,7 +15,7 @@ def test_generate_call_jjwrecker(mocker):
     proc = mocker.Mock()
     mocker.patch('subprocess.Popen', return_value=proc)
     assert jyml.generate(config_file, job_name) == proc
-    subprocess.Popen.assert_called_with(['jjwrecker', '-f', config_file,'-n', job_name], stdout=subprocess.PIPE)
+    subprocess.Popen.assert_called_with(['jjwrecker','-v',  '-f', config_file,'-n', job_name, '-o', '/tmp/output'], stdout=subprocess.PIPE)
 
 def test_generate_handles_oserror(mocker):
     """
