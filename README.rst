@@ -22,6 +22,8 @@ To generate a .yml file :
 
     $ jyml --generate job/config.xml job_name
 
+A folder named `output` will be created, and there you'll find your yaml file.
+
 To create a jenkins job from a .yml file :
 
 ::
